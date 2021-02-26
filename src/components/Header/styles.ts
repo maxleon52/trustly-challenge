@@ -16,7 +16,7 @@ export const Container = styled.div`
     align-items: center;
     justify-content: space-between;
     width: 100%;
-    max-width: 1600px;
+    max-width: 1200px;
 
     button {
       display: flex;
@@ -48,6 +48,6 @@ export const Container = styled.div`
 export const Separator = styled.div`
   /* border: 2px solid blue; */
   height: 34px;
-  width: 115px;
+  width: 0px;
   background: transparent;
 `;

@@ -1,11 +1,13 @@
 import React from 'react';
 
-import { Container } from './styles';
+import { Container, Content } from './styles';
 
 const Checkout: React.FC = () => {
   return (
     <Container>
-      <h1>Checkout</h1>
+      <Content>
+        <h1>Checkout</h1>
+      </Content>
     </Container>
   );
 };
