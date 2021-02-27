@@ -1,6 +1,7 @@
 import React, { useEffect, useMemo, useState } from 'react';
 import { FiSearch } from 'react-icons/fi';
 import Card from '../../components/Card';
+
 import api from '../../services/api';
 import { Colors } from '../../styles/Colors';
 
@@ -60,8 +61,10 @@ const Products: React.FC = () => {
                 <div key={hasSearch.id}>
                   <Card
                     description={hasSearch.description}
+                    color={hasSearch.color}
                     price={hasSearch.price}
                     thumbnailURL={hasSearch.thumbnailURL}
+                    maxresURL={hasSearch.maxresURL}
                   />
                 </div>
               ))}
@@ -74,8 +77,10 @@ const Products: React.FC = () => {
                 <div key={product.id}>
                   <Card
                     description={product.description}
+                    color={product.color}
                     price={product.price}
                     thumbnailURL={product.thumbnailURL}
+                    maxresURL={product.maxresURL}
                   />
                 </div>
               ))}

@@ -41,6 +41,7 @@ export const Container = styled.div`
       font-size: 26.1038px;
       line-height: 30px;
       text-align: center;
+      margin-right: 50px;
     }
   }
 `;
@@ -48,6 +49,6 @@ export const Container = styled.div`
 export const Separator = styled.div`
   /* border: 2px solid blue; */
   height: 34px;
-  width: 0px;
+  width: 115px;
   background: transparent;
 `;
