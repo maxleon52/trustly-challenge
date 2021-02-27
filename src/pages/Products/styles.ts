@@ -26,7 +26,7 @@ export const Header = styled.div`
   align-items: center;
   padding: 0px 40px 20px;
   width: 100%;
-  max-width: 1200px;
+  max-width: 1232px;
 
   input {
     flex: 1;
@@ -48,7 +48,7 @@ export const ListProducts = styled.div`
   /* align-self: center; */
   /* justify-self: center; */
   width: 100%;
-  max-width: 1200px;
+  max-width: 1232px;
 
   > div {
     /* border: 2px solid green; */

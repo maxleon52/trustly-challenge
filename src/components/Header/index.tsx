@@ -24,7 +24,7 @@ const Header: React.FC = () => {
           <Separator />
         ) : (
           <Link
-            to={location.pathname === '/checkout' ? '/products' : '/ckeckout'}
+            to={location.pathname === '/checkout' ? '/products' : '/checkout'}
           >
             <button type="button">
               <FiArrowLeft size={20} />

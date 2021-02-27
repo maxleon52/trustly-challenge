@@ -1,4 +1,5 @@
 import React, { useContext } from 'react';
+import { Link } from 'react-router-dom';
 import Breadcrumber from '../../components/Breadcrumber';
 import { CartContext } from '../../contexts/Cart';
 
@@ -92,7 +93,9 @@ const Checkout: React.FC = () => {
             </PaymentMethod>
 
             <ContinueButton>
-              <Button>Continue</Button>
+              <Link to="/review">
+                <Button>Continue</Button>
+              </Link>
             </ContinueButton>
           </CheckoutData>
         </DataPayment>

@@ -10,7 +10,7 @@ export const Container = styled.div`
 export const Content = styled.div`
   /* border: 2px solid blue; */
   width: 100%;
-  max-width: 1200px;
+  max-width: 1232px;
 `;
 
 export const DataPayment = styled.div`
@@ -18,7 +18,7 @@ export const DataPayment = styled.div`
   display: flex;
   column-gap: 38px;
   width: 100%;
-  max-width: 1200px;
+  max-width: 1232px;
   margin-top: 40px;
 
   img {

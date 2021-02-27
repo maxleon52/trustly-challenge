@@ -16,7 +16,7 @@ export const Container = styled.div`
     align-items: center;
     justify-content: space-between;
     width: 100%;
-    max-width: 1200px;
+    max-width: 1232px;
 
     button {
       display: flex;
@@ -33,7 +33,7 @@ export const Container = styled.div`
     }
 
     h1 {
-      width: 113.12px;
+      /* width: 113.12px; */
       height: 31.36px;
       font-family: Arial;
       font-style: normal;
