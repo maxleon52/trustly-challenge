@@ -11,6 +11,7 @@ export const Container = styled.div`
   height: 420px;
   width: 372px;
   padding-left: 32px;
+  margin-top: 20px;
   background: linear-gradient(
       180deg,
       rgba(0, 0, 0, 0.3) 0%,
@@ -33,6 +34,10 @@ export const Container = styled.div`
       letter-spacing: 0px;
       text-align: left;
       margin: 32px 0 11px 0;
+
+      b {
+        color: #acd685;
+      }
     }
 
     strong {
