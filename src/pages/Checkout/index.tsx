@@ -1,5 +1,4 @@
-import React, { useContext } from 'react';
-import { Link } from 'react-router-dom';
+import React, { useCallback, useContext, useEffect, useState } from 'react';
 import Breadcrumber from '../../components/Breadcrumber';
 import { CartContext } from '../../contexts/Cart';
 
@@ -16,11 +15,40 @@ import {
   PaymentMethod,
   Badger,
   ContinueButton,
+  PaymentItem,
 } from './styles';
 import Button from '../../components/Button';
+import Modal from '../../components/Modal';
+import SelectBank from './components/SelectBank';
+import Message from './components/Message';
+import LoginBank from './components/LoginBank';
+import Finish from './components/Finish';
 
 const Checkout: React.FC = () => {
   const { productForCheckout } = useContext(CartContext);
+  const [isSelected, setIsSelected] = useState<string>('1');
+  const [isOpenModal, setIsOpenModal] = useState<boolean>(false);
+  const [selectedContentModal, SetSelectedContentModal] = useState<string>(
+    'selectBank',
+  );
+
+  // useEffect(() => {
+  //   console.log('Nome: ', selectedContentModal);
+  //   console.log('valor modal: ', isOpenModal);
+  // }, [selectedContentModal, isOpenModal]);
+
+  function handleOpenModal() {
+    setIsOpenModal(!isOpenModal);
+    SetSelectedContentModal('selectBank');
+  }
+
+  const selectedContent = useCallback((nextPage: string) => {
+    SetSelectedContentModal(nextPage);
+  }, []);
+
+  const backContent = useCallback((content: string) => {
+    SetSelectedContentModal(content);
+  }, []);
 
   return (
     <Container>
@@ -60,7 +88,11 @@ const Checkout: React.FC = () => {
 
             <PaymentMethod>
               <h4>Select your payment method</h4>
-              <div>
+              <PaymentItem
+                id="1"
+                isSelected={isSelected}
+                onClick={() => setIsSelected('1')}
+              >
                 <Badger>
                   <span>SAVE 10%</span>
                 </Badger>
@@ -71,8 +103,12 @@ const Checkout: React.FC = () => {
                   alt="bandeiras"
                   style={{ height: '28px', width: '176px' }}
                 />
-              </div>
-              <div>
+              </PaymentItem>
+              <PaymentItem
+                id="2"
+                isSelected={isSelected}
+                onClick={() => setIsSelected('2')}
+              >
                 <p>Card payment</p>
 
                 <img
@@ -80,8 +116,12 @@ const Checkout: React.FC = () => {
                   alt="bandeiras master visa"
                   style={{ width: '85px', height: '24px' }}
                 />
-              </div>
-              <div>
+              </PaymentItem>
+              <PaymentItem
+                id="3"
+                isSelected={isSelected}
+                onClick={() => setIsSelected('3')}
+              >
                 <p>Apple Pay</p>
 
                 <img
@@ -89,17 +129,38 @@ const Checkout: React.FC = () => {
                   alt="bandeiras"
                   style={{ width: '66px', height: '35px' }}
                 />
-              </div>
+              </PaymentItem>
             </PaymentMethod>
 
             <ContinueButton>
-              <Link to="/review">
-                <Button>Continue</Button>
-              </Link>
+              <Button onClick={handleOpenModal}>Continue</Button>
             </ContinueButton>
           </CheckoutData>
         </DataPayment>
       </Content>
+      {isOpenModal && (
+        <Modal
+          onCancel={() => setIsOpenModal(!isOpenModal)}
+          currentContentModal={selectedContentModal}
+          backContent={backContent}
+        >
+          {selectedContentModal === 'selectBank' && (
+            <SelectBank nameComponent={selectedContent} />
+          )}
+          {selectedContentModal === 'message' && (
+            <Message nameComponent={selectedContent} />
+          )}
+          {selectedContentModal === 'loginBank' && (
+            <LoginBank nameComponent={selectedContent} />
+          )}
+          {selectedContentModal === 'finish' && (
+            <Finish nameComponent={selectedContent} />
+          )}
+          {selectedContentModal === undefined && (
+            <>{setIsOpenModal(!isOpenModal)}</>
+          )}
+        </Modal>
+      )}
     </Container>
   );
 };

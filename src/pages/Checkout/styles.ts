@@ -1,4 +1,9 @@
 import styled from 'styled-components';
+import { Colors } from '../../styles/Colors';
+
+interface PaymentItemProps {
+  isSelected: string;
+}
 
 export const Container = styled.div`
   /* border: 2px solid red; */
@@ -116,19 +121,6 @@ export const PaymentMethod = styled.div`
     letter-spacing: 0px;
     text-align: left;
   }
-
-  > div {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    height: 75px;
-    position: relative;
-    margin-top: 20px;
-    border: 2px solid transparent;
-    border-radius: 10px;
-    padding: 0px 15px;
-    background: #fff;
-  }
 `;
 
 export const Badger = styled.div`
@@ -160,4 +152,23 @@ export const ContinueButton = styled.div`
   margin-top: 20px;
   display: flex;
   justify-content: flex-end;
+`;
+
+export const PaymentItem = styled.div<PaymentItemProps>`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 75px;
+  position: relative;
+  margin-top: 20px;
+  border: 2px solid transparent;
+  border-radius: 10px;
+  padding: 0px 15px;
+  background: #fff;
+
+  border-color: ${({ id, isSelected }) =>
+    id === isSelected ? Colors.greenDark : 'transparent'};
+  transition: all 0.3s;
+
+  cursor: pointer;
 `;

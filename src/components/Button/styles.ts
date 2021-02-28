@@ -1,7 +1,8 @@
+import { ButtonHTMLAttributes } from 'react';
 import styled from 'styled-components';
 import { Colors } from '../../styles/Colors';
 
-interface Props {
+interface Props extends ButtonHTMLAttributes<HTMLButtonElement> {
   color?: string;
 }
 
