@@ -8,6 +8,10 @@ export const Container = styled.div`
   /* justify-content: center; */
   width: 100%;
   /* height: calc(100vh - 87px); */
+
+  @media (max-width: 700px) {
+    display: grid;
+  }
 `;
 
 export const Content = styled.div`
@@ -18,13 +22,17 @@ export const Content = styled.div`
   justify-content: center;
   width: 100%;
   margin-top: 81px;
+
+  @media (max-width: 700px) {
+    display: grid;
+    margin-top: -5px;
+  }
 `;
 
 export const Header = styled.div`
   border-bottom: 2px solid ${Colors.grey};
   display: flex;
   align-items: center;
-  padding: 0px 40px 20px;
   width: 100%;
   max-width: 1232px;
 
@@ -35,6 +43,13 @@ export const Header = styled.div`
     border: none;
     ::placeholder {
       color: ${Colors.textLight};
+    }
+  }
+  @media (min-width: 1px) and (max-width: 700px) {
+    padding: 5px;
+
+    svg {
+      height: 22px;
     }
   }
 `;
@@ -56,5 +71,13 @@ export const ListProducts = styled.div`
     align-items: center;
     justify-content: center;
     /* width: 100%; */
+  }
+
+  @media (min-width: 1px) and (max-width: 700px) {
+    /* border: 2px solid red; */
+    display: grid;
+    grid-template-columns: 1fr;
+    row-gap: 40px;
+    margin-top: 27px;
   }
 `;

@@ -26,6 +26,15 @@ const translate: {
   finish: 'loginBank',
 };
 
+const translateTitle: {
+  [key: string]: string;
+} = {
+  selectBank: 'Select your bank',
+  message: 'Sign into your bank',
+  loginBank: 'Sign into your bank',
+  finish: 'Choose an account',
+};
+
 const Modal: React.FC<IModalProps> = ({
   children,
   onCancel,
@@ -92,7 +101,7 @@ const Modal: React.FC<IModalProps> = ({
                   >
                     <FiChevronLeft color="#52565F" size={20} />
                   </BackButton>
-                  <h4>titulo aqui</h4>
+                  <h4>{translateTitle[currentContentModal]}</h4>
 
                   <CloseButton onClick={handleCancel}>
                     <FiX color="#52565F" size={20} />

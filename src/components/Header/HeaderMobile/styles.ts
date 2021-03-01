@@ -1,12 +1,11 @@
 import styled from 'styled-components';
-import { Colors } from '../../styles/Colors';
 
 export const Container = styled.div`
   /* border: 2px solid red; */
-  display: flex;
+  display: none;
   align-items: center;
   justify-content: center;
-  background: ${Colors.grey};
+  background: #fff;
   width: 100%;
   height: 87px;
 
@@ -46,7 +45,19 @@ export const Container = styled.div`
   }
 
   @media (max-width: 700px) {
-    display: none;
+    display: flex;
+    padding: 0 10px;
+
+    a {
+      visibility: hidden;
+    }
+
+    > div {
+      img {
+        width: 29px;
+        height: 29px;
+      }
+    }
   }
 `;
 

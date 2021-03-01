@@ -33,6 +33,8 @@ export function CartProvider({ children }: Props) {
 
   const productForCheckout = dataProduct;
 
+  localStorage.setItem('@Trustly:product', JSON.stringify(productForCheckout));
+
   function handleGetProduct(
     description: string,
     maxresURL: string,

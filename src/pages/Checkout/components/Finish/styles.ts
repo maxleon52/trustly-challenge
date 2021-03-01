@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import { Colors } from '../../../../styles/Colors';
 
 export const Container = styled.div`
   color: #000;

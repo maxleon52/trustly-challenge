@@ -3,11 +3,11 @@ import Button from '../../../../components/Button';
 
 import { Container } from './styles';
 
-interface Props {
-  nameComponent: (name: string) => void;
-}
+// interface Props {
+//   nameComponent: (name: string) => void;
+// }
 
-const Finish: React.FC<Props> = ({ nameComponent }) => {
+const Finish: React.FC = () => {
   return (
     <Container>
       <header>
@@ -37,7 +37,7 @@ const Finish: React.FC<Props> = ({ nameComponent }) => {
         <span>Printable version</span>
 
         <Button
-          onClick={() => nameComponent('pronto terminou')}
+          // onClick={() => console.log('agora vai.')}
           style={{ width: '100%', marginTop: '20px' }}
           color="#0078cd"
         >
