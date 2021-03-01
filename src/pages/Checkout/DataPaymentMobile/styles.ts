@@ -7,13 +7,14 @@ interface PaymentItemProps {
 
 export const DataPayment = styled.div`
   /* border: 2px solid; */
-  display: flex;
+  display: none;
   column-gap: 38px;
   width: 100%;
   max-width: 1232px;
   margin-top: 40px;
 
   @media (max-width: 700px) {
+    display: flex;
     flex-direction: column;
     margin-top: 0px;
     column-gap: 0px;
