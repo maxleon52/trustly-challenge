@@ -1,6 +1,10 @@
 import styled from 'styled-components';
 
-export const Container = styled.div`
+interface ContainerProps {
+  buttonVisible: string;
+}
+
+export const Container = styled.div<ContainerProps>`
   /* border: 2px solid red; */
   display: none;
   align-items: center;
@@ -48,14 +52,26 @@ export const Container = styled.div`
     display: flex;
     padding: 0 10px;
 
-    a {
-      visibility: hidden;
-    }
-
     > div {
       img {
         width: 29px;
         height: 29px;
+      }
+
+      a {
+        visibility: ${({ buttonVisible }) =>
+          buttonVisible === '/products' && 'hidden'};
+
+        button {
+          width: 92px;
+          height: 28px;
+          font-size: 18px;
+
+          svg {
+            width: 18px;
+            height: 18px;
+          }
+        }
       }
     }
   }

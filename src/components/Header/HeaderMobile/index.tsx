@@ -10,7 +10,7 @@ const Header: React.FC = () => {
   const location = useLocation();
 
   return (
-    <Container>
+    <Container buttonVisible={location.pathname}>
       <div>
         <Link
           to={location.pathname === '/checkout' ? '/products' : '/checkout'}

@@ -12,6 +12,10 @@ export const Container = styled.div`
   max-width: 859px;
   height: 1px;
   margin: 67px auto;
+
+  @media (max-width: 700px) {
+    display: none;
+  }
 `;
 
 export const StepOne = styled.div`

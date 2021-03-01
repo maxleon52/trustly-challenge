@@ -10,6 +10,10 @@ export const Container = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
+
+  @media (max-width: 700px) {
+    padding: 0 10px;
+  }
 `;
 
 export const Content = styled.div`
@@ -32,6 +36,10 @@ export const DataPayment = styled.div`
     border-radius: 10px;
     object-fit: cover;
   }
+
+  @media (max-width: 700px) {
+    display: none;
+  }
 `;
 
 export const CheckoutData = styled.div`
@@ -42,10 +50,15 @@ export const CheckoutData = styled.div`
   height: 633px;
   border-radius: 10px;
   padding: 29px 38px;
+
+  @media (max-width: 700px) {
+    /* padding: 0px; */
+  }
 `;
 
 export const Infos = styled.div`
   display: flex;
+  /* border: 2px solid blue; */
 
   > div {
     width: 100%;

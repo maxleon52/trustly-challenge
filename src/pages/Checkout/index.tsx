@@ -1,9 +1,12 @@
 import React, { useState } from 'react';
-import Breadcrumber from '../../components/Breadcrumber';
 
 import flagsMore from '../../assets/flagsMore.png';
 import flagsMasterVisa from '../../assets/flagsMasterVisa.png';
 import flagsApple from '../../assets/flagApple.png';
+
+import Breadcrumber from '../../components/Breadcrumber';
+
+import DataPaymentMobile from './DataPaymentMobile';
 
 import {
   Container,
@@ -70,6 +73,8 @@ const Checkout: React.FC = () => {
     <Container>
       <Content>
         <Breadcrumber />
+
+        <DataPaymentMobile />
 
         <DataPayment>
           <img src={product.maxresURL} alt="foto do produto" />
