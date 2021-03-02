@@ -59,8 +59,7 @@ export const Container = styled.div<ContainerProps>`
       }
 
       a {
-        visibility: ${({ buttonVisible }) =>
-          buttonVisible === '/products' && 'hidden'};
+        visibility: ${({ buttonVisible }) => buttonVisible === '/' && 'hidden'};
 
         button {
           width: 92px;

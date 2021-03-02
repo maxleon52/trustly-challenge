@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect, useState } from 'react';
 
 import flagsMore from '../../../assets/flagsMore.png';
@@ -26,7 +27,8 @@ interface ProductProps {
 const DataPaymentMobile: React.FC = () => {
   const [isSelected, setIsSelected] = useState<string>('1');
   const [isLarger, setIsLarger] = useState<boolean>(false);
-  const [approvated, setApprovated] = useState(true);
+  const [approvated, setApprovated] = useState(false);
+
   const [product] = useState<ProductProps>(() => {
     const storagedProduct = localStorage.getItem('@Trustly:product');
 
@@ -37,6 +39,12 @@ const DataPaymentMobile: React.FC = () => {
     return {};
   });
 
+  function handleOpenModal() {
+    document
+      .querySelector('#overlayModal')
+      ?.classList.replace('before', 'after');
+  }
+
   useEffect(() => {
     if (window.matchMedia('(max-width: 700px)').matches) {
       setIsLarger(true);
@@ -45,11 +53,18 @@ const DataPaymentMobile: React.FC = () => {
     }
   }, [isLarger]);
 
+  useEffect(() => {
+    const isApprovated = window.isConfirm;
+    if (isApprovated === true) {
+      setApprovated(true);
+    }
+  }, [window.isConfirm]);
+
   return (
     <DataPayment>
       <h1>Checkout</h1>
       <CheckoutData>
-        {approvated === true ? (
+        {approvated === false ? (
           <>
             <Infos>
               <div>
@@ -57,8 +72,8 @@ const DataPaymentMobile: React.FC = () => {
 
                 <article>
                   <div>
-                    <h4>SS Sneaker</h4>
-                    <p>x 1 Green Size 41</p>
+                    <h4>{product.description}</h4>
+                    <p>{`x 1 ${product.color} Size 41`}</p>
                     <p>Item #35ggjd065168</p>
                   </div>
                   <div>
@@ -75,7 +90,7 @@ const DataPaymentMobile: React.FC = () => {
                   <h6>Total cost</h6>
                   <p>Delivery included</p>
                 </div>
-                <strong>$100</strong>
+                <strong>${product.price}</strong>
               </section>
             </Infos>
 
@@ -134,13 +149,11 @@ const DataPaymentMobile: React.FC = () => {
               </PaymentItem>
             </PaymentMethod>
             <ContinueButton>
-              <Button onClick={() => setApprovated(!approvated)}>
-                Continue
-              </Button>
+              <Button onClick={handleOpenModal}>Continue</Button>
             </ContinueButton>
           </>
         ) : (
-          <ReviewMobile />
+          <ReviewMobile product={product} />
         )}
       </CheckoutData>
     </DataPayment>

@@ -12,9 +12,7 @@ const Header: React.FC = () => {
   return (
     <Container buttonVisible={location.pathname}>
       <div>
-        <Link
-          to={location.pathname === '/checkout' ? '/products' : '/checkout'}
-        >
+        <Link to={location.pathname === '/checkout' ? '/' : '/checkout'}>
           <button type="button">
             <FiArrowLeft size={20} />
             Back
