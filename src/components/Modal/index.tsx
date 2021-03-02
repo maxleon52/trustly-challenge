@@ -6,40 +6,40 @@ import React, {
   useState,
 } from 'react';
 import { useTransition } from 'react-spring';
-import { FiChevronLeft, FiChevronUp, FiX } from 'react-icons/fi';
+// import { FiChevronLeft, FiChevronUp, FiX } from 'react-icons/fi';
 
 import { Overlay, Container, CloseButton, BackButton } from './styles';
-import locker from '../../assets/locker.svg';
+// import locker from '../../assets/locker.svg';
 
 interface IModalProps {
   onCancel(): void;
-  backContent: (content: string) => void;
-  currentContentModal: string;
+  backContent?: (content: string) => void;
+  currentContentModal?: string;
   containerStyle?: React.CSSProperties;
 }
 
-const translate: {
-  [key: string]: string;
-} = {
-  message: 'selectBank',
-  loginBank: 'message',
-  finish: 'loginBank',
-};
+// const translate: {
+//   [key: string]: string;
+// } = {
+//   message: 'selectBank',
+//   loginBank: 'message',
+//   finish: 'loginBank',
+// };
 
-const translateTitle: {
-  [key: string]: string;
-} = {
-  selectBank: 'Select your bank',
-  message: 'Sign into your bank',
-  loginBank: 'Sign into your bank',
-  finish: 'Choose an account',
-};
+// const translateTitle: {
+//   [key: string]: string;
+// } = {
+//   selectBank: 'Select your bank',
+//   message: 'Sign into your bank',
+//   loginBank: 'Sign into your bank',
+//   finish: 'Choose an account',
+// };
 
 const Modal: React.FC<IModalProps> = ({
   children,
   onCancel,
-  backContent,
-  currentContentModal,
+  // backContent,
+  // currentContentModal,
   containerStyle,
 }) => {
   const ref = useRef(null);
@@ -94,7 +94,7 @@ const Modal: React.FC<IModalProps> = ({
               ref={containerRef}
               style={{ ...props, ...containerStyle }}
             >
-              <header>
+              {/* <header>
                 <div>
                   <BackButton
                     onClick={() => backContent(translate[currentContentModal])}
@@ -108,17 +108,17 @@ const Modal: React.FC<IModalProps> = ({
                   </CloseButton>
                 </div>
                 <span>Amount: $100.00</span>
-              </header>
+              </header> */}
 
               <section>{children}</section>
 
-              <footer>
+              {/* <footer>
                 <img src={locker} alt="" />
                 <p>
                   Secure connection by <span>PayWithMayBank&reg;</span>
                 </p>
                 <FiChevronUp color="#52565F" size={20} />
-              </footer>
+              </footer> */}
             </Container>
           );
         }

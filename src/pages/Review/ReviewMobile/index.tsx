@@ -2,8 +2,9 @@ import React from 'react';
 
 import greenBankIcon from '../../../assets/green-bank-icon.svg';
 
-import { Infos, ColumnOne, ColumnTwo, ContinueButton } from './styles';
 import Button from '../../../components/Button';
+
+import { Infos, ColumnOne, ColumnTwo, ContinueButton } from './styles';
 
 const Review: React.FC = () => {
   return (

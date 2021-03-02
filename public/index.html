@@ -10,17 +10,19 @@
   <link rel="preconnect" href="https://fonts.gstatic.com">
   <link href="https://fonts.googleapis.com/css2?family=Share+Tech&display=swap" rel="stylesheet">
 
+  <link rel="stylesheet" href="index.css">
+
   <!-- intergração Trustly -->
-  <!-- <script>
+  <script>
     var PayWithMyBankOptions = {
       closeButton: false,
       dragAndDrop: true,
       widgetContainerId: 'callTrustly',
     };
-  </script> -->
+  </script>
 
-  <!-- <script src="//sandbox.paywithmybank.com/start/scripts/pwmb.js?accessId=D61EC9BAF0BB369B9438"
-    type="text/javascript"></script> -->
+  <script src="https://sandbox.paywithmybank.com/start/scripts/pwmb.js?accessId=D61EC9BAF0BB369B9438"
+    type="text/javascript"></script>
 
   <title>Shoes.on</title>
 </head>
@@ -29,9 +31,12 @@
   <noscript>You need to enable JavaScript to run this app.</noscript>
   <div id="root"></div>
 
+  <div id="overlayModal" class="before">
+    <div id="callTrustly"></div>
+  </div>
 </body>
 
-<!-- <script>
+<script>
   var establishData = {
     accessId: 'D61EC9BAF0BB369B9438',
     merchantId: '1004314986',
@@ -44,8 +49,45 @@
     returnUrl: '#success',
     cancelUrl: '#cancel'
   };
+
   PayWithMyBank.selectBankWidget(establishData, PayWithMyBankOptions);
 
+
+  PayWithMyBank.addPanelListener(function (command, event) {
+    if (command === 'event' && event.type === 'new_location') {
+      if (event.data.indexOf('#success') === 0) {
+        alert('success!');
+        window.isConfirm = true;
+        if (window.isConfirm === true) {
+          document
+            .querySelector('#overlayModal')
+            ?.classList.replace('after', 'before');
+        }
+
+      } else {
+        alert('cancel!');
+        window.isConfirm = false;
+        if (window.isConfirm === false) {
+          document
+            .querySelector('#overlayModal')
+            ?.classList.replace('after', 'before');
+        }
+      }
+      return false;
+    }
+  });
+</script>
+
+<!-- <script>
+  async function closeModal() {
+    if (await isConfirm === true) {
+      document
+        .querySelector('#overlayModal')
+        ?.classList.replace('after', 'before');
+    }
+  }
+
+  closeModal();
 </script> -->
 
 </html>

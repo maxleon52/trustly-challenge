@@ -1,10 +1,12 @@
-import React, { useState } from 'react';
+/* eslint-disable @typescript-eslint/no-unused-vars */
+import React, { useEffect, useState } from 'react';
 
 import flagsMore from '../../assets/flagsMore.png';
 import flagsMasterVisa from '../../assets/flagsMasterVisa.png';
 import flagsApple from '../../assets/flagApple.png';
 
 import Breadcrumber from '../../components/Breadcrumber';
+import Portal from '../../components/Portal';
 
 import DataPaymentMobile from './DataPaymentMobile';
 
@@ -21,7 +23,7 @@ import {
 } from './styles';
 
 import Button from '../../components/Button';
-// import Modal from '../../components/Modal';
+import Modal from '../../components/Modal';
 
 // import SelectBank from './components/SelectBank';
 // import Message from './components/Message';
@@ -37,14 +39,20 @@ interface ProductProps {
   price: string;
 }
 
-const Checkout: React.FC = () => {
+declare global {
+  interface Window {
+    isConfirm: boolean;
+  }
+}
+
+const Checkout: React.FC<Window> = () => {
   const [isSelected, setIsSelected] = useState<string>('1');
   // const [isOpenModal, setIsOpenModal] = useState<boolean>(false);
   // const [selectedContentModal, SetSelectedContentModal] = useState<string>(
   //   'selectBank',
   // );
-
-  const [approvated, setApprovated] = useState(true);
+  // const { isConfirm } = window;
+  const [approvated, setApprovated] = useState(false);
 
   const [product] = useState<ProductProps>(() => {
     const storagedProduct = localStorage.getItem('@Trustly:product');
@@ -56,10 +64,11 @@ const Checkout: React.FC = () => {
     return {};
   });
 
-  // function handleOpenModal() {
-  //   setIsOpenModal(!isOpenModal);
-  //   SetSelectedContentModal('selectBank');
-  // }
+  function handleOpenModal() {
+    document
+      .querySelector('#overlayModal')
+      ?.classList.replace('before', 'after');
+  }
 
   // const selectedContent = useCallback((nextPage: string) => {
   //   SetSelectedContentModal(nextPage);
@@ -68,6 +77,13 @@ const Checkout: React.FC = () => {
   // const backContent = useCallback((content: string) => {
   //   SetSelectedContentModal(content);
   // }, []);
+
+  useEffect(() => {
+    console.log('window aqui: ', window.isConfirm);
+    if (window.isConfirm === true) {
+      setApprovated(!approvated);
+    }
+  }, [window.isConfirm]);
 
   return (
     <Container>
@@ -80,7 +96,7 @@ const Checkout: React.FC = () => {
           <img src={product.maxresURL} alt="foto do produto" />
 
           <CheckoutData>
-            {approvated === true ? (
+            {approvated === false ? (
               <>
                 <Infos>
                   <div>
@@ -155,9 +171,7 @@ const Checkout: React.FC = () => {
                   </PaymentItem>
                 </PaymentMethod>
                 <ContinueButton>
-                  <Button onClick={() => setApprovated(!approvated)}>
-                    Continue
-                  </Button>
+                  <Button onClick={handleOpenModal}>Continue</Button>
                 </ContinueButton>
               </>
             ) : (
@@ -166,31 +180,28 @@ const Checkout: React.FC = () => {
           </CheckoutData>
         </DataPayment>
       </Content>
-      {/* <div id="callTrustly" /> */}
 
-      {/* {isOpenModal && (
-        <Modal
+      {/* <Modal
           onCancel={() => setIsOpenModal(!isOpenModal)}
           currentContentModal={selectedContentModal}
           backContent={backContent}
         >
-          {selectedContentModal === 'selectBank' && (
-            <SelectBank nameComponent={selectedContent} />
-          )}
-          {selectedContentModal === 'message' && (
-            <Message nameComponent={selectedContent} />
-          )}
-          {selectedContentModal === 'loginBank' && (
-            <LoginBank nameComponent={selectedContent} />
-          )}
-          {selectedContentModal === 'finish' && (
-            <Finish nameComponent={selectedContent} />
-          )}
-          {selectedContentModal === undefined && (
-            <>{setIsOpenModal(!isOpenModal)}</>
-          )}
-        </Modal>
-      )} */}
+        //  {selectedContentModal === 'selectBank' && (
+          <SelectBank nameComponent={selectedContent} />
+        )}
+        {selectedContentModal === 'message' && (
+          <Message nameComponent={selectedContent} />
+        )}
+        {selectedContentModal === 'loginBank' && (
+          <LoginBank nameComponent={selectedContent} />
+        )}
+        {selectedContentModal === 'finish' && (
+          <Finish nameComponent={selectedContent} />
+        )}
+        {selectedContentModal === undefined && (
+          <>{setIsOpenModal(!isOpenModal)}</>
+        )}
+        </Modal> */}
     </Container>
   );
 };

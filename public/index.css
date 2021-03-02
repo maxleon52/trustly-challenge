@@ -1,0 +1,34 @@
+#overlayModal.before {
+  /* visibility: hidden; */
+  /* border: 2px solid red; */
+  display: none;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0px;
+  z-index: 9999;
+
+  background: #00000090;
+}
+#overlayModal.after {
+  /* visibility: hidden; */
+  /* border: 2px solid red; */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0px;
+  z-index: 9999;
+
+  background: #00000090;
+}
+
+#callTrustly{
+  background: #fff;
+  padding: 10px;
+  border-radius: 10px;
+}
