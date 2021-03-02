@@ -16,7 +16,7 @@ const Breadcrumber: React.FC = () => {
           )
         }
       />
-      <StepThree isStep={location.pathname === '/review'} />
+      <StepThree isStep={window.isConfirm === true && true} />
     </Container>
   );
 };

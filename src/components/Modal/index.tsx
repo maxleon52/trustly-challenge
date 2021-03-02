@@ -8,7 +8,7 @@ import React, {
 import { useTransition } from 'react-spring';
 // import { FiChevronLeft, FiChevronUp, FiX } from 'react-icons/fi';
 
-import { Overlay, Container, CloseButton, BackButton } from './styles';
+import { Overlay, Container } from './styles';
 // import locker from '../../assets/locker.svg';
 
 interface IModalProps {

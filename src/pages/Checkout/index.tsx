@@ -6,7 +6,6 @@ import flagsMasterVisa from '../../assets/flagsMasterVisa.png';
 import flagsApple from '../../assets/flagApple.png';
 
 import Breadcrumber from '../../components/Breadcrumber';
-import Portal from '../../components/Portal';
 
 import DataPaymentMobile from './DataPaymentMobile';
 
@@ -79,9 +78,9 @@ const Checkout: React.FC<Window> = () => {
   // }, []);
 
   useEffect(() => {
-    console.log('window aqui: ', window.isConfirm);
-    if (window.isConfirm === true) {
-      setApprovated(!approvated);
+    const isApprovated = window.isConfirm;
+    if (isApprovated === true) {
+      setApprovated(true);
     }
   }, [window.isConfirm]);
 
@@ -101,9 +100,9 @@ const Checkout: React.FC<Window> = () => {
                 <Infos>
                   <div>
                     <h4>Cart total</h4>
-                    <h6>SS Sneaker</h6>
+                    <h6>{product.description}</h6>
                     <div>
-                      <p>x 1 Green Size 41</p>
+                      <p>{`x 1 ${product.color} Size 41`}</p>
                       <p>Item #35ggjd065168</p>
                     </div>
                   </div>
@@ -120,7 +119,7 @@ const Checkout: React.FC<Window> = () => {
                         <h6>Total cost</h6>
                         <p>Delivery included</p>
                       </div>
-                      <strong>$100</strong>
+                      <strong>${product.price}</strong>
                     </section>
                   </div>
                 </Infos>
@@ -175,7 +174,7 @@ const Checkout: React.FC<Window> = () => {
                 </ContinueButton>
               </>
             ) : (
-              <Review />
+              <Review product={product} />
             )}
           </CheckoutData>
         </DataPayment>

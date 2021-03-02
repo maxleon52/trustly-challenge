@@ -11,25 +11,24 @@ import { Container, Separator } from './styles';
 const translate: {
   [key: string]: string;
 } = {
-  '/products': 'Sneakers',
+  '/': 'Sneakers',
   '/checkout': 'Checkout',
-  '/review': 'Review and Confirmation',
 };
 
 const Header: React.FC = () => {
   const location = useLocation();
+
+  const verify = Boolean(window.isConfirm);
 
   return (
     <>
       <HeaderMobile />
       <Container>
         <div>
-          {location.pathname === '/products' ? (
+          {location.pathname === '/' ? (
             <Separator />
           ) : (
-            <Link
-              to={location.pathname === '/checkout' ? '/products' : '/checkout'}
-            >
+            <Link to={location.pathname === '/checkout' ? '/' : '/checkout'}>
               <button type="button">
                 <FiArrowLeft size={20} />
                 Back
@@ -37,7 +36,11 @@ const Header: React.FC = () => {
             </Link>
           )}
 
-          <h1>{translate[location.pathname]}</h1>
+          {verify === false ? (
+            <h1>{translate[location.pathname]}</h1>
+          ) : (
+            <h1>Review and Confirmation</h1>
+          )}
 
           <img src={avatar} alt="avatar" />
         </div>
